@@ -1,0 +1,39 @@
+{
+  "name": "erp-law-back",
+  "version": "1.0.0",
+  "description": "ERP para la gestion de casos de abogados",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtheran/ERP-LAW-BACK.git"
+  },
+  "keywords": [
+    "NODEJS",
+    "EXPRESS",
+    "LAW",
+    "ERP",
+    "CASES"
+  ],
+  "author": "JMTB",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jtheran/ERP-LAW-BACK/issues"
+  },
+  "homepage": "https://github.com/jtheran/ERP-LAW-BACK#readme",
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "colors": "^1.4.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "prisma": "^6.5.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9"
+  }
+}
