@@ -2,6 +2,7 @@
   "name": "erp-law-back",
   "version": "1.0.0",
   "description": "ERP para la gestion de casos de abogados",
+  "type": "module",
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon src/index.js"
@@ -25,10 +26,19 @@
   "homepage": "https://github.com/jtheran/ERP-LAW-BACK#readme",
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "bcrypt": "^5.1.1",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "diskusage": "^1.2.0",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "os-utils": "^0.0.14",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
     "prisma": "^6.5.0",
+    "speedtest-net": "^2.2.0",
     "winston": "^3.17.0"
   },
   "devDependencies": {
