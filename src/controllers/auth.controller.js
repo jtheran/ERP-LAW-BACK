@@ -1,5 +1,6 @@
 import logger from '../logs/logger.js';
 import jwt from '../lib/jwt.js';
+import config from '../config/config.js';
 import { PrismaClient } from '@prisma/client';
 import { encryptPass, matchPass } from '../lib/hash.js';
 
@@ -26,7 +27,7 @@ export const login = async (req, res) => {
         const token = jwt(user);
 
         logger.info('LOGUEADO CORRECTAMENTE!!!');
-        return res.status(200).json({msg: 'LOGUEADO CORRECTAMENTE', token: token});
+        return res.status(200).json({msg: 'LOGUEADO CORRECTAMENTE', access_token: token, iv: config.key});
     }catch(err){
         logger.error('ERROR INTERNO DEL SERVIDOR: ' + err.message);
         return res.status(500).json({msg: 'ERROR INTERNO DEL SERVIDOR'});

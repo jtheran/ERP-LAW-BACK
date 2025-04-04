@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import passport from 'passport';
 import csurf from 'csurf';
-import loginLimiter from '../lib/ratelimiter.js';
+import loginLimiter from '../utils/ratelimiter.js';
 import { login, logout, register } from '../controllers/auth.controller.js';
 
 const router = Router();
