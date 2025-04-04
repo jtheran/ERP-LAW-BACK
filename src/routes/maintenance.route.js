@@ -18,6 +18,6 @@ router.post("/maintenance", passport.authenticate('jwt', { session: false}), aut
   res.json({ message: `Maintenance mode set to ${status}` });
 });
 
-router.get('/metrics', passport.authenticate('jwt', { session: false}), authorizeRoles('ADMIN'), getServerMetrics);
+router.get('/metrics', getServerMetrics);
 
 export default router;

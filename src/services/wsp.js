@@ -34,10 +34,6 @@ client.on('ready', () => {
     console.log('✅ SESSION STARTED')
 });
 
-client.on('authenticated', (session) => {
-  logger.warn(`[WHATSAAP] AUTENTICACÍON EXITOSA: ${session}`);
-});
-
 client.on('auth_failure', (msg) => {
   logger.error(`[WHATSAAP] AUTENTICACÓN FALLIDA: ${msg}`); 
 });

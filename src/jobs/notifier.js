@@ -18,7 +18,7 @@ cron.schedule('0 7 * * *', async () => {
     const events = await prisma.judicialEvent.findMany({
         where: {
           date: {
-            gte: now,
+            gte: nowDate,
             lte: tomorrow
           }
         },
