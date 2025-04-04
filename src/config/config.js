@@ -14,6 +14,8 @@ const config = {
     iv: process.env.IV || 16,
     key: process.env.KEY_ENCRYPT || 'vf35fdb165df4bn4dr8',
     algoritm: process.env.ALGORITM || 'aes-256-cbc',
+    adminPhone: process.env.ADMINPHONE || '+573001234567',
+    urlDB: process.env.DATABASE_URL || 'mongodb://localhost:27017/LAWDB?replicaSet=rs0',
 };
 
 export default config;

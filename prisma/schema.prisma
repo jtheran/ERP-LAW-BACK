@@ -17,10 +17,12 @@ model User {
   name      String
   email     String   @unique
   password  String
+  phone     String
   role      String   // "lawyer", "admin", "client"
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   cases     Case[]   @relation("UserCases")
+  events    JudicialEvent[]
 }
 
 model Case {
@@ -37,6 +39,7 @@ model Case {
   defendant    Party    @relation("DefendantCases", fields: [defendantId], references: [id])
   defendantId  String   @db.ObjectId
   documents    Document[]
+  events       JudicialEvent[]
   court        Court?   @relation(fields: [courtId], references: [id])
   courtId      String?  @db.ObjectId
 }
@@ -70,4 +73,15 @@ model Court {
   phone     String?
   email     String?
   cases     Case[]
+}
+
+model JudicialEvent {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  court     String
+  case      Case     @relation(fields: [caseId], references: [id])
+  caseId    String   @db.ObjectId
+  date      DateTime
+  createdBy User     @relation(fields: [createdById], references: [id])
+  createdById String @db.ObjectId
 }

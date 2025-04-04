@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import config from '../config/config';
+import config from '../config/config.js';
 import logger from '../logs/logger.js';
 
 const transporter = nodemailer.createTransport({
@@ -9,16 +9,15 @@ const transporter = nodemailer.createTransport({
         }
 });
 
-export const sendEmail = async (to, subject, html, text=null) => {
+export const sendEmail = async (to, subject, text) => {
     try{
 
         await transporter.sendMail(
             { 
-                from: config.adminEmail, 
+                from: 'ERPLAW: '+config.adminEmail, 
                 to,
                 subject,
-                text,
-                html 
+                text, 
             });
 
         logger.info('CORREO ENVIADO A: '+to);

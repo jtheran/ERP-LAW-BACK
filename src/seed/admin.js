@@ -18,6 +18,7 @@ async function createAdminUser() {
                 email: adminEmail,
                 password: hashedPassword,
                 role: "ADMIN",
+                phone: config.adminPhone,
             },
         });
         console.log("Admin user created successfully!");
