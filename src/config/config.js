@@ -16,6 +16,9 @@ const config = {
     algoritm: process.env.ALGORITM || 'aes-256-cbc',
     adminPhone: process.env.ADMINPHONE || '+573001234567',
     urlDB: process.env.DATABASE_URL || 'mongodb://localhost:27017/LAWDB?replicaSet=rs0',
+    qdrantUrl: process.env.QDRANT_URL || 'http://localhost:6333',
+    qdrantCollection: process.env.QDRANT_COLLECTION_NAME || 'docsLAW',
+    keyGPT: process.env.OPENAI_API_KEY || '',
 };
 
 export default config;

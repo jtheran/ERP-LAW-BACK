@@ -43,3 +43,5 @@ export const sendMessage = async (number, message) => {
   const chatId = number.includes('@c.us') ? number : `${number}@c.us`;
   await client.sendMessage(chatId, message);
 };
+
+

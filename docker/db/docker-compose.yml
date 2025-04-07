@@ -8,3 +8,21 @@ services:
     command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
     ports:
       - "27018:27017"
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    restart: unless-stopped
+  
+  trilium:
+    image: zadam/trilium
+    container_name: trilium
+    ports:
+      - 37840:8080
+    volumes:
+      - trilium-data:/home/node/trilium-data
+    
+volumes:
+  trilium-data:

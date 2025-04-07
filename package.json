@@ -26,6 +26,7 @@
   "homepage": "https://github.com/jtheran/ERP-LAW-BACK#readme",
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.7",
@@ -43,6 +44,7 @@
     "multer": "^1.4.5-lts.2",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0",
+    "openai": "^4.92.0",
     "os-utils": "^0.0.14",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
