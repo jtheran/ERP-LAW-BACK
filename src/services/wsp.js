@@ -10,7 +10,7 @@ const MONGO_URI = config.urlDB;
 await mongoose.connect(MONGO_URI);
 
 const storeMongo = new MongoStore({ mongoose: mongoose });
-const { Client, RemoteAuth } = pkg;
+const { Client, RemoteAuth, MessageMedia } = pkg;
 
 
 export const client = new Client({
