@@ -6,10 +6,14 @@ import passport from 'passport';
 import passportJWT from './middlewares/passport.js';
 import csurf from 'csurf';
 import cookieParser from 'cookie-parser';
+import { corsOptions } from './utils/cors.js';
 import { maintenanceMiddleware } from "./middlewares/maintenance.js";
 import maintenaceRoutes from './routes/maintenance.route.js';
 import fileRoutes from './routes/file.route.js';
-import { corsOptions } from './utils/cors.js';
+import caseRoutes from './routes/case.routes.js';
+import userRoutes from './routes/user.routes.js';
+import wspRoutes from './routes/wsp.routes.js';
+
 
 const app = express();
 
@@ -28,7 +32,9 @@ passport.use(passportJWT);
 //Routes
 app.use('/api', maintenaceRoutes);
 app.use('/api', fileRoutes);
-
+app.use('/api', caseRoutes);
+app.use('/api', userRoutes);
+app.use('/api', wspRoutes);
 
 
 
