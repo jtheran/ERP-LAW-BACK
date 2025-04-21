@@ -13,6 +13,7 @@ import fileRoutes from './routes/file.route.js';
 import caseRoutes from './routes/case.routes.js';
 import userRoutes from './routes/user.routes.js';
 import wspRoutes from './routes/wsp.routes.js';
+import partyRoutes from './routes/party.routes.js';
 
 
 const app = express();
@@ -35,7 +36,7 @@ app.use('/api', fileRoutes);
 app.use('/api', caseRoutes);
 app.use('/api', userRoutes);
 app.use('/api', wspRoutes);
-
+app.use('/api', partyRoutes);
 
 
 export default app;
