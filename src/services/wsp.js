@@ -30,12 +30,12 @@ client.on('qr', async (qr) => {
 });
 
 client.on('ready', () => {
-    logger.info('[WHATSAPP] session started.....');
-    console.log('✅ SESSION STARTED')
+    logger.warn('[WHATSAPP] session started.....');
+    logger.info('[WHATSAPP] ✅ SESSION STARTED');
 });
 
 client.on('auth_failure', (msg) => {
-  logger.error(`[WHATSAAP] AUTENTICACÓN FALLIDA: ${msg}`); 
+  logger.error(`[WHATSAAP] AUTENTICATION ERROR: ${msg}`); 
 });
 
 
