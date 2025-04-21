@@ -6,11 +6,11 @@ import { createCase, deleteCase, getCaseById, getCases, updateCase} from '../con
 
 const router = express.Router();
 
-router.delete('/case:id', passport.authenticate('jwt', { session: false}), authorizeRoles(['ADMIN', 'USER']), deleteCase);
+router.delete('/case/:id', passport.authenticate('jwt', { session: false}), authorizeRoles(['ADMIN', 'USER']), deleteCase);
 
-router.get('/case:id', passport.authenticate('jwt', { session: false}), authorizeRoles(['ADMIN', 'USER']), getCaseById);
+router.get('/case/:id', passport.authenticate('jwt', { session: false}), authorizeRoles(['ADMIN', 'USER']), getCaseById);
 
-router.put('/case:id', passport.authenticate('jwt', { session: false}), authorizeRoles(['ADMIN', 'USER']), updateCase);
+router.put('/case/:id', passport.authenticate('jwt', { session: false}), authorizeRoles(['ADMIN', 'USER']), updateCase);
 
 router.get('/case', passport.authenticate('jwt', { session: false}), authorizeRoles(['ADMIN', 'USER']), getCases);
 

@@ -5,6 +5,30 @@ import logger from '../logs/logger.js';
 const prisma = new PrismaClient();
 
 // 📌 Subir archivo físicamente y guardar en la DB
+
+export const getFiles = async (req, res) => {
+    try{
+        const docs = await prisma.document.findMany({ 
+            include: { 
+                case: true, 
+                user: true 
+            } 
+        });
+
+        if(!docs){
+            logger.error('[PRISMA] DOCS NOT FOUND!!!!');
+            return res.status(400).json({msg: 'DOCS NOT FOUND'});
+        }
+        res.json(docs);
+        logger.info('[PRISMA] DOCS FOUND!!!');
+        return res.status(201).json({ msg: 'DOCS FOUND', file: docs });
+    } catch (err) {
+        logger.error(`Error al subir archivo: ${err.message}`);
+        return res.status(500).json({ msg: 'Error al guardar el archivo' });
+    }
+  };
+
+
 export const uploadFile = async (req, res) => {
     try {
         if (!req.file) return res.status(400).json({ msg: 'No se subió ningún archivo' });
@@ -31,9 +55,9 @@ export const downloadFile = async (req, res) => {
 
         if (!file) return res.status(404).json({ msg: 'Archivo no encontrado' });
 
-        logger.info('Archivo descargado')
+        logger.info('DOWNLOAD FILE SUCCESS');
         res.setHeader('Content-Type', file.type);
-        return res.download(file.url, file.name);
+        return res.status(200).json({msg: 'DOWNLOAD FILE SUCCESS!!'}).download(file.url, file.name);
     } catch (err) {
         logger.error(`Error al descargar archivo: ${err.message}`);
         return res.status(500).json({ msg: 'Error al descargar el archivo' });
