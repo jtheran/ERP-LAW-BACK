@@ -13,11 +13,8 @@ import fileRoutes from './routes/file.route.js';
 import caseRoutes from './routes/case.routes.js';
 import userRoutes from './routes/user.routes.js';
 import wspRoutes from './routes/wsp.routes.js';
-<<<<<<< HEAD
 import partyRoutes from './routes/party.routes.js';
-=======
 import courtRoutes from './routes/court.routes.js';
->>>>>>> e0e4e938db7b8a2092be418dd4194e09de793fba
 
 
 const app = express();
@@ -40,12 +37,8 @@ app.use('/api', fileRoutes);
 app.use('/api', caseRoutes);
 app.use('/api', userRoutes);
 app.use('/api', wspRoutes);
-<<<<<<< HEAD
 app.use('/api', partyRoutes);
-=======
 app.use('/api', courtRoutes);
-
->>>>>>> e0e4e938db7b8a2092be418dd4194e09de793fba
 
 
 export default app;
