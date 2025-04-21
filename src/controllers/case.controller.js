@@ -1,4 +1,3 @@
-import { Logger } from 'winston';
 import logger from '../logs/logger.js';
 import { PrismaClient } from '@prisma/client';
 
