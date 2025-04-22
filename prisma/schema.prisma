@@ -26,6 +26,7 @@ model User {
   partys    Party[]
   documents Document[]
   courts     Court[]
+  subscriptions Subscription[]
 
 }
 
@@ -104,3 +105,26 @@ model JudicialEvent {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Plan {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  stripePrice String   // price_id de Stripe (mensual o anual)
+  interval    String   // "month" | "year"
+  price       Int      // en centavos
+  features    String[]
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  stripeSubId   String   @unique
+  status        String   // "active" | "past_due" | "canceled" | "trialing"
+  currentPeriodEnd DateTime
+  planId        String @db.ObjectId
+  plan          Plan     @relation(fields: [planId], references: [id])
+  userId        String @db.ObjectId
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+}
+
