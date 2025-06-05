@@ -15,6 +15,7 @@ import userRoutes from './routes/user.routes.js';
 import wspRoutes from './routes/wsp.routes.js';
 import partyRoutes from './routes/party.routes.js';
 import courtRoutes from './routes/court.routes.js';
+import eventRoutes from './routes/event.routes.js';
 
 
 const app = express();
@@ -39,6 +40,7 @@ app.use('/api', userRoutes);
 app.use('/api', wspRoutes);
 app.use('/api', partyRoutes);
 app.use('/api', courtRoutes);
+app.use('/api', eventRoutes);
 
 
 export default app;

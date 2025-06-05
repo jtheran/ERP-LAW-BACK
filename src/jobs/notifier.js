@@ -7,8 +7,8 @@ import { sendMessage } from '../services/wsp.js';
 
 const prisma = new PrismaClient();
 
-// Corre cada día a las 7:00 AM
-cron.schedule('0 7 * * *', async () => {
+// Corre cada día a las 8:00 AM
+cron.schedule('0 8 * * *', async () => {
     logger.info('[NOTIFY] Verificando Notificaciones....');
 
     const nowDate = new Date();
@@ -28,7 +28,11 @@ cron.schedule('0 7 * * *', async () => {
       });
 
     if(!events){
+<<<<<<< HEAD
       logger.warn('NO AHY EVENTOS PARA NOTIFICAR!!!') 
+=======
+       logger.warn('NO HAY EVENTOS PARA NOTIFICAR!!!') 
+>>>>>>> b604fc28b04f206f0ba181819e8007a3a729cee9
     }  
 
     for (const event of events) {
@@ -50,6 +54,36 @@ cron.schedule('0 7 * * *', async () => {
         }
     }
       
-
-
 });
+
+cron.schedule('0 8 */7 * *', async () => {
+    const today = new Date();
+    const soon = new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000);
+  
+    const expiring = await prisma.subscription.findMany({
+      where: {
+        status: 'ACTIVE',
+        currentPeriodEnd: { lte: soon, gte: today }
+      },
+      include: { user: true, plan: true }
+    });
+  
+    for (const sub of expiring) {
+
+        const msg = `⚠️ *Subscription Expiring Soon*\n
+        *Plan:* ${sub.plan.name}\n
+        *User:* ${sub.user.name}\n
+        *Expires:* ${sub.currentPeriodEnd.toLocaleString()}\n\n
+        _To avoid interruptions, please renew before the expiration date._`;
+
+        if(sub.user.phone){
+            const chatId = `${sub.user.phone}@c.us`;
+            await sendMessage(chatId, msg);
+        } 
+
+        await sendEmail(sub.user.email, '⚠️ *Subscription Expiring Soon*\n', msg);
+
+    }
+  });
+
+
