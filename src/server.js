@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(maintenanceMiddleware);
 app.use(morgan('morgan'));
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(csurf({ cookie: true }));
 app.use(passport.initialize());

@@ -26,7 +26,7 @@ export const getFiles = async (req, res) => {
         logger.error(`Error al subir archivo: ${err.message}`);
         return res.status(500).json({ msg: 'Error al guardar el archivo' });
     }
-  };
+};
 
 
 export const uploadFile = async (req, res) => {

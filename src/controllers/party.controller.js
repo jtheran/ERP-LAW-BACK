@@ -20,7 +20,7 @@ export const getParties = async (req, res) => {
         return res.status(500).json({msg: 'ERROR INTERNO DEL SERVIDOR'});
     }
 };
-  
+
 export const createParty = async (req, res) => {
     try{
         const party = await prisma.party.create({ 

@@ -28,7 +28,7 @@ cron.schedule('0 7 * * *', async () => {
       });
 
     if(!events){
-       logger.warn('NO AHY EVENTOS PARA NOTIFICAR!!!') 
+      logger.warn('NO AHY EVENTOS PARA NOTIFICAR!!!') 
     }  
 
     for (const event of events) {
